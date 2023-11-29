@@ -1,0 +1,36 @@
+name: Hoge
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hoge:
+    name: Hoge
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          ref: main
+
+      - name: Sync File
+        uses: Redocly/repo-file-sync-action@master
+        with:
+          GH_PAT: ${{ secrets.PAT_TOKEN }}
+          GIT_EMAIL: hirotomo.yamada@avap.co.jp
+          GIT_USERNAME: hirotomoyamada
+          SKIP_PR: true
+
+      - name: Update File
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PAT_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'hirotomoyamada',
+              repo: 'github-actions-b-trial',
+              workflow_id: 'hoge.yml',
+              ref: 'main'
+            })

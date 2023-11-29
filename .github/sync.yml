@@ -1,0 +1,3 @@
+hirotomoyamada/github-actions-b-trial:
+  - source: .hoge/
+    dest: .hoge/

@@ -15,13 +15,13 @@ jobs:
         with:
           ref: main
 
-      # - name: Sync File
-      #   uses: hirotomoyamada/repo-file-sync-action@main
-      #   with:
-      #     GH_PAT: ${{ secrets.PAT_TOKEN }}
-      #     GIT_EMAIL: hirotomo.yamada@avap.co.jp
-      #     GIT_USERNAME: hirotomoyamada
-      #     BRANCH_PREFIX: changeset-release
+      - name: Sync File
+        uses: hirotomoyamada/repo-file-sync-action@main
+        with:
+          GH_PAT: ${{ secrets.PAT_TOKEN }}
+          GIT_EMAIL: hirotomo.yamada@avap.co.jp
+          GIT_USERNAME: hirotomoyamada
+          BRANCH_PREFIX: changeset-release
 
       - name: Update File
         uses: actions/github-script@v7

@@ -16,7 +16,7 @@ jobs:
           ref: main
 
       - name: Sync File
-        uses: hirotomoyamada/repo-file-sync-action@master
+        uses: hirotomoyamada/repo-file-sync-action@main
         with:
           GH_PAT: ${{ secrets.PAT_TOKEN }}
           GIT_EMAIL: hirotomo.yamada@avap.co.jp

@@ -23,6 +23,28 @@ jobs:
           GIT_USERNAME: hirotomoyamada
           BRANCH_PREFIX: changeset-release
 
+      - name: Change PR Title
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PAT_TOKEN }}
+          script: |
+            const { data: pullRequests } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              head: `${context.repo.owner}:${{ steps.sync.outputs.BRANCH_NAME }}`
+            });
+
+            if (pullRequests.length > 0) {
+              const pr = pullRequests[0];
+              await github.rest.pulls.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: pr.number,
+                title: '新しいタイトル'
+              });
+            }
+
       - name: Update File
         uses: actions/github-script@v7
         with:

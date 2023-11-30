@@ -18,7 +18,7 @@ jobs:
       - name: Sync File
         uses: hirotomoyamada/repo-file-sync-action@main
         with:
-          GH_PAT: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
           GIT_EMAIL: hirotomo.yamada@avap.co.jp
           GIT_USERNAME: hirotomoyamada
           SKIP_PR: true

@@ -11,7 +11,7 @@ const main = async () => {
   await mkdir(path.join(process.cwd(), '.hoge'), { recursive: true });
 
   await Promise.all(
-    Array(12)
+    Array(13)
       .fill(0)
       .map(async (_, index) => {
         await writeFile(path.join(process.cwd(), '.hoge', `hoge-${index + 1}.json`), json);

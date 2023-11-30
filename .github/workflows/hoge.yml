@@ -21,6 +21,7 @@ jobs:
           GH_PAT: ${{ secrets.PAT_TOKEN }}
           GIT_EMAIL: hirotomo.yamada@avap.co.jp
           GIT_USERNAME: hirotomoyamada
+          SKIP_PR: true
           TARGET_BRANCH: hoge
 
       - name: Update File
